@@ -1,0 +1,50 @@
+# 字与行
+
+## 正文
+
+正文字号 18px，移动端 17px；行高 1.75；阅读栏宽 680px。这个组合让一行字停在眼睛不用来回找下一行的地方。
+
+字体栈优先使用系统里的思源宋体与 Noto Serif SC，其次宋体与 Georgia。界面文字使用思源黑体、Noto Sans SC 或系统无衬线字体。代码使用 JetBrains Mono、Fira Code 或 Consolas。
+
+> 留白不是没内容，是让上一句有机会沉下去。
+
+## 标题层级
+
+### 三级标题
+
+#### 四级标题
+
+标题字重统一为 600，不使用 700 以上的粗体。中文标题在 600 时已经有足够的重量，再粗会压住正文。
+
+## 行内元素
+
+正文里的链接像[一条溪流](https://quarto.org)，只靠强调色和一条偏移的下划线区分。行内代码写作 `--text-muted`，`strong` 用于**需要停一下**的词，`em` 用于*语气变化*。
+
+脚注也可以出现在这里。[^note]
+
+[^note]: 脚注的字号更小，颜色更淡，但仍然保持 4.5:1 以上的对比度。
+
+## 代码块
+
+```javascript
+const themes = ["dawn", "noon", "dusk", "night"];
+
+function byHour(hour) {
+  if (hour >= 6 && hour < 11) return "dawn";
+  if (hour >= 11 && hour < 17) return "noon";
+  if (hour >= 17 && hour < 20) return "dusk";
+  return "night";
+}
+```
+
+代码块不使用彩虹语法色。关键字、字符串、注释都在同一族色相里，只靠字重与斜体区分；读代码时，颜色不应该比结构更响。
+
+## 列表
+
+1. 先决定语义，再决定色值。
+2. 色值只出现在变量文件里。
+3. 改色之后重新跑对比度检查。
+
+- 纸：`--bg`、`--bg-elevated`、`--bg-subtle`
+- 墨：`--text`、`--text-muted`、`--text-faint`
+- 强调：`--accent`、`--accent-hover`、`--accent-contrast`

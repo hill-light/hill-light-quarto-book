@@ -1,0 +1,26 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "山色"
+  subtitle: "四时阅读主题 · Quarto Book 模板"
+  author: "chengzhao-dev"
+  date: "2026-10-22"
+  chapters:
+    - index.qmd
+    - chapters/light.qmd
+    - chapters/type.qmd
+    - chapters/components.qmd
+  page-footer:
+    left: "山色 / Hill Light"
+    right: "MIT"
+
+format:
+  hill-light-html:
+    toc: true
+    toc-title: "目录"
+    toc-depth: 2
+    number-sections: true
+    code-copy: true
+    date-format: "YYYY 年 M 月 D 日"

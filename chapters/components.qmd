@@ -1,0 +1,107 @@
+# 组件
+
+## 提示块
+
+:::{.callout-note}
+提示块的边框、标题与图标都跟着强调色走。夜间不会变成另一套彩虹色。
+:::
+
+:::{.callout-warning}
+警告块保留语义，但不使用高饱和的黄色背景；它仍然是纸的一部分，只是左边多了一道更重的线。
+:::
+
+:::{.callout-important}
+## 一条硬规则
+
+正文对比度不低于 4.5:1，大标题不低于 3:1。色板可以好看，但不能以可读性为代价。
+:::
+
+## 表格
+
+| 变量 | 用途 | 晓雾 | 夜月 |
+| --- | --- | --- | --- |
+| `--bg` | 纸面 | `#F2EFE7` | `#1B2223` |
+| `--text` | 正文 | `#2B3538` | `#D7DDD9` |
+| `--accent` | 链接 | `#2D6A66` | `#8CB9AE` |
+| `--divider` | 分隔 | `#DCD8CD` | `#313C3A` |
+
+表头使用次级文字色，行分隔使用更淡的分隔线；表格在窄屏可以横向滚动。
+
+## 引用与分隔
+
+> 好的夜间主题不是把白天翻过来，而是把灯调暗，让眼睛自己适应。
+>
+> <cite>设计笔记</cite>
+
+---
+
+分隔线只有 1px，不使用阴影或渐变伪装层次。纸上的层次来自留白、字重和一条细线。
+
+## 按钮与焦点
+
+正文页不放置主按钮；主题切换器使用原生 `<button>`，有 `aria-pressed`、完整的 `aria-label` 与可见焦点环。
+
+按 <kbd>Tab</kbd> 可以把焦点移到侧栏顶部的四时按钮（窄屏在顶栏）。焦点环是 2px 的强调色，偏移 2px。
+
+## 图片
+
+```{=html}
+<div class="hill-figure">
+<svg viewBox="0 0 1200 720" role="img" aria-labelledby="hill-figure-title hill-figure-desc">
+<title id="hill-figure-title">溪山四时</title>
+<desc id="hill-figure-desc">同一幅山路、溪流与松树的矢量构图，天空、远山、雾、受光与溪面反光随四个时辰变化。</desc>
+<defs>
+<linearGradient id="book-sky-grad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" style="stop-color: var(--sky-top)"></stop>
+<stop offset="1" style="stop-color: var(--sky-bottom)"></stop>
+</linearGradient>
+<radialGradient id="book-glow-grad" cx="0.5" cy="0.5" r="0.5">
+<stop offset="0" stop-opacity="0.55" style="stop-color: var(--light)"></stop>
+<stop offset="1" stop-opacity="0" style="stop-color: var(--light)"></stop>
+</radialGradient>
+<linearGradient id="book-mist-grad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-opacity="0" style="stop-color: var(--mist)"></stop>
+<stop offset="0.45" stop-opacity="0.95" style="stop-color: var(--mist)"></stop>
+<stop offset="1" stop-opacity="0" style="stop-color: var(--mist)"></stop>
+</linearGradient>
+<linearGradient id="book-mist-fade" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#ffffff" stop-opacity="0"></stop>
+<stop offset="0.18" stop-color="#ffffff" stop-opacity="1"></stop>
+<stop offset="0.82" stop-color="#ffffff" stop-opacity="1"></stop>
+<stop offset="1" stop-color="#ffffff" stop-opacity="0"></stop>
+</linearGradient>
+<mask id="book-mist-mask" maskUnits="userSpaceOnUse" x="0" y="350" width="1200" height="190">
+<rect x="0" y="350" width="1200" height="190" fill="url(#book-mist-fade)"></rect>
+</mask>
+</defs>
+<rect width="1200" height="720" style="fill: url(#book-sky-grad)"></rect>
+<circle cx="872" cy="204" r="168" style="fill: url(#book-glow-grad)"></circle>
+<circle cx="872" cy="204" r="50" style="fill: var(--light)"></circle>
+<path d="M0 352 L112 262 L212 322 L302 232 L394 316 L470 268 L562 336 L660 270 L760 340 L852 300 L952 352 L1042 300 L1132 350 L1200 330 L1200 470 L0 470 Z" style="fill: var(--mountain-far); opacity: 0.62"></path>
+<path d="M0 444 L92 352 L202 410 L312 300 L432 404 L522 336 L642 420 L752 330 L872 414 L982 352 L1092 430 L1200 402 L1200 552 L0 552 Z" style="fill: var(--mountain-mid); opacity: 0.9"></path>
+<path d="M312 300 L432 404 L386 404 L332 348 Z" style="fill: var(--ridge-highlight); opacity: var(--ridge-opacity)"></path>
+<path d="M752 330 L872 414 L820 414 L772 372 Z" style="fill: var(--ridge-highlight); opacity: var(--ridge-opacity)"></path>
+<path d="M112 262 L212 322 L168 322 L128 288 Z" style="fill: var(--ridge-highlight); opacity: calc(var(--ridge-opacity) * 0.7)"></path>
+<rect x="0" y="350" width="1200" height="190" mask="url(#book-mist-mask)" style="fill: url(#book-mist-grad); opacity: var(--haze-opacity)"></rect>
+<path d="M0 560 C120 498 240 494 360 528 C480 562 560 518 680 524 C800 530 884 578 1004 568 C1092 560 1152 526 1200 534 L1200 720 L0 720 Z" style="fill: var(--mountain-near); opacity: 0.94"></path>
+<path d="M586 720 C606 662 642 610 694 566 C736 530 780 520 828 526 L862 538 C812 562 780 606 760 660 C746 698 742 720 742 720 Z" style="fill: var(--water); opacity: 0.8"></path>
+<path d="M700 720 C714 676 740 638 776 606" style="fill: none; stroke: var(--water-line); stroke-width: 3; opacity: var(--water-light-opacity)"></path>
+<path d="M646 720 C664 680 690 650 722 624" style="fill: none; stroke: var(--water-line); stroke-width: 2; opacity: var(--water-light-opacity)"></path>
+<g style="fill: var(--tree)">
+<path d="M150 690 L150 552" style="fill: none; stroke: var(--tree); stroke-width: 5; opacity: 0.85"></path>
+<path transform="translate(150 470) scale(1.25)" d="M0 0 L-16 30 L-6 27 L-24 58 L-10 54 L-30 88 L30 88 L10 54 L24 58 L6 27 L16 30 Z"></path>
+<path transform="translate(206 560) scale(0.8)" d="M0 0 L-16 30 L-6 27 L-24 58 L-10 54 L-30 88 L30 88 L10 54 L24 58 L6 27 L16 30 Z"></path>
+<path transform="translate(1062 640) scale(1.4)" d="M0 0 L-16 30 L-6 27 L-24 58 L-10 54 L-30 88 L30 88 L10 54 L24 58 L6 27 L16 30 Z"></path>
+<path transform="translate(1118 606) scale(0.9)" d="M0 0 L-16 30 L-6 27 L-24 58 L-10 54 L-30 88 L30 88 L10 54 L24 58 L6 27 L16 30 Z"></path>
+<path transform="translate(432 600) scale(0.6)" d="M0 0 L-16 30 L-6 27 L-24 58 L-10 54 L-30 88 L30 88 L10 54 L24 58 L6 27 L16 30 Z"></path>
+</g>
+<g style="fill: none; stroke: var(--text); stroke-width: 2; opacity: 0.4; stroke-linecap: round">
+<path d="M322 244 q12 -9 24 0 q12 -9 24 0"></path>
+<path d="M392 216 q10 -7 20 0 q10 -7 20 0"></path>
+</g>
+</svg>
+<p class="hill-figure-caption">同一构图 · 只换光</p>
+</div>
+```
+
+图片之上只叠加一层极淡的遮罩，四时通过 `--img-overlay-opacity` 调整，不为每张图准备四套滤镜。这张示意图本身就是同一份内联 SVG，几何不动，变量换色。

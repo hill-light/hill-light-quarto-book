@@ -1,4 +1,4 @@
-# 山色 · Hill Light for Quarto Book
+# 山光 · Hill Light for Quarto Book
 
 一套为中文长文准备的四时阅读主题，打包成 Quarto Book 扩展。同一座山留在原地，只让光移动：晓雾、午荫、暮烟、夜月共用一套语义变量，切换时不重建 DOM，也不换版式。
 
